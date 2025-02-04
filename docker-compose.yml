@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todolist
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  backend:
+    build:
+      context: ./backend
+    container_name: backend-todolist
+    ports:
+      - "8080:8080"
+    network:
+        - default
+    environment:
+      DATABASE_URL: mysql://root:root@db:3306/todolistdocker-compose.yml
+    depends_on:
+      - db
+    restart: always
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend-todolist
+    ports:
+      - "3000:80" # Mapper le port 3000 localement vers le port 80 du conteneur
+    restart: always
+    network:
+      - default
+networks:
+    default:
+        external:
+        name: todolist
