@@ -21,3 +21,5 @@ app.use('/api/todos', routes);
 app.listen(PORT, () => {
     console.log(`Backend running on http://localhost:${PORT}`);
 });
+
+module.exports = app; // Exporter l'application pour les tests
