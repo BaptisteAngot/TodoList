@@ -28,8 +28,4 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/ping', (req, res) => {
-    res.status(200).message('pong');
-});
-
 module.exports = router;

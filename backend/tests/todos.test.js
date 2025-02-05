@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("../app/server"); // Importer l'application Express
+const app = require("../app/server");
 
 describe("Test de l'API Ping", () => {
     it("Devrait répondre avec un statut 200", async () => {

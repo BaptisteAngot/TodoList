@@ -16,6 +16,9 @@ app.use(bodyParser.json());
 
 // Routes pour gérer les ToDos
 app.use('/api/todos', routes);
+app.get('/ping', (req, res) => {
+    res.status(200).send('pong');
+});
 
 // Lancer le serveur
 app.listen(PORT, () => {

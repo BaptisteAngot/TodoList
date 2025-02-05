@@ -11,8 +11,9 @@ const connection = mysql.createConnection({
 // Établir la connexion
 connection.connect((err) => {
     if (err) {
-        console.error('Erreur de connexion à la base de données:', err);
-        process.exit(1);
+        console.error("⚠️ Impossible de se connecter à MySQL :", err.message);
+        console.log("🟡 L'API continue de tourner sans MySQL...");
+        return;
     }
     console.log('Connecté à la base de données MySQL');
 });
